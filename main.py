@@ -25,7 +25,7 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # Define the port on which you want to connect
 PORT = 54321
 # connect to the server on local computer
-s.connect(('127.0.0.1', PORT))
+s.connect(('host.docker.internal', PORT))
 
 def nhan_dang():
     global imaged ,label,label_lag, label_array,label_max
@@ -143,17 +143,17 @@ if __name__ == "__main__":
                 image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)#gray
                 ret,gray = cv2.threshold(image,100,255,cv2.THRESH_BINARY)#nhi phan
                 img = np.copy(gray)
-                cv2.imshow("be4",img)
+                #cv2.imshow("be4",img)
                 dientich,mask=tinhdientich(img,image)#lọc thành phần nhỏ
                 gray = cv2.bitwise_and(gray, gray, mask=mask)
                 image = cv2.bitwise_and(image, image, mask=mask)
-                cv2.imshow("gray",image)
+                #cv2.imshow("gray",image)
                 #cv2.imshow("mask", mask)
                 lenght=[]
                 find_max3=[]
                 find_min3=[]
                 avr=[]
-                cv2.waitKey(1)
+                #cv2.waitKey(1)
                 arr=np.sum(image,axis=0)#sum dọc ảnh
                 for i in range(len(arr)-2):
                     avr.append(arr[i]-arr[i+2])# dạo hàm 
@@ -254,7 +254,7 @@ if __name__ == "__main__":
                                 #print(x1, y1, x2, y2)
                                 #gocc, vantocc = car.PDfuzzy((x1+x2)/2-200)
                                 #Control(gocc, vantocc)
-                            cv2.imshow('line', bird)
+                #cv2.imshow('line', bird)
                 #image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
 
                 #print(current_speed, current_angle)
@@ -273,8 +273,8 @@ if __name__ == "__main__":
                     label_moni=label1[len(label1)-1][0]
                 else:
                     label_moni=None
-                print(label_moni,label_max, (time.time()-to1)%100, label)
-                print(mode)
+                #print(label_moni,label_max, (time.time()-to1)%100, label)
+                #print(mode)
                 #print(np.argmax(np.array(label_array)),label )
                 result= np.argmax(label_array)
                 if (dientich>69000)and((label_moni==7))and(mode!=2)and(mode!=3)and(mode!=4):
