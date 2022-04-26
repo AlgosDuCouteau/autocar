@@ -266,7 +266,7 @@ class auto_car():
                 y0=b/2
                 x0=int(y0*b1+a1)
                 cv2.line(ANH, (x1, y1), (x2, y2), (255, 0, 0), 10, 8)
-                cv2.imshow('line3',ANH)
+                #cv2.imshow('line3',ANH)
                 return x0,y0
 
     
@@ -401,7 +401,7 @@ class auto_car():
                         x, y, w, h = box[0], box[1], box[2], box[3]
                         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 255), 2)
                         cv2.putText(img, f'{classNames[classIds[i]].upper()} {int(confs[i]*100)}%',(x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 255), 2)
-                cv2.imshow('train',img)
+                #cv2.imshow('train',img)
                 cv2.waitKey(1)
 
                 return img,indices,classIds,confs
